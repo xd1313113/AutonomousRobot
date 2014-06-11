@@ -1,0 +1,35 @@
+<launch>
+  <!-- Set /use_sim_time. This is import for stage and move_base to work properly. Staget sets this automatically when
+       it starts, but the order of nodes is not determined when using launch files-->
+    <!-- Run the map server -->
+    <!--<node name="map_server" pkg="map_server" type="map_server" args="$(find my_map_package)/my_map.pgm my_map_resolution"/>-->
+
+    <!--- Run AMCL -->
+    <!--<include file="$(find amcl)/examples/amcl_diff.launch" />-->
+    <!--- Run rviz -->
+    <!--<group ns="DAY" clear_params="true">-->
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/rviz/single_robot.vcg"/>
+
+        <param name="/use_sim_time" type="bool" value="false" />
+
+        <include file="$(find project)/launch/hokuyo_laser_filter.launch" />
+
+        <!--<include file="$(find project)/launch/static_transform.launch" />-->
+        <node pkg="project" type="tf_map.py" respawn="false" name="p3dx_new_odom_broad" output="screen"/>
+        <node pkg="project" type="control" respawn="false" name="p3dx_control" output="screen">
+            <!--<param name="static_map" value="false"/>-->
+            <!--<param name="rolling_window" value="true"/>-->
+            <!--<param name="base_global_planner" value="carrot_planner/CarrotPlanner"/>-->
+            <!--<param name="recovery_behavior_enabled" value="false"/>-->
+            <!--<rosparam file="$(find project)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />-->
+            <!--<rosparam file="$(find project)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />-->
+            <!--<rosparam file="$(find project)/params/local_costmap_params.yaml" command="load" />-->
+            <!--<rosparam file="$(find project)/params/global_costmap_params.yaml" command="load" />-->
+            <!--<rosparam file="$(find project)/params/base_local_planner_params.yaml" command="load" />-->
+            <rosparam file="$(find project)/params/control_params.yaml" command="load"/>
+        </node>
+    <!--</group>-->
+
+    <!--Run our controller-->
+    <!--<node pkg="project" type="control" name ="p3dx_control" output="screen" />-->
+</launch>

@@ -1,0 +1,3 @@
+#!/bin/bash
+rosrun project randomobstacles.py `rospack find project`/world/obstacles.inc
+roslaunch project del2.launch

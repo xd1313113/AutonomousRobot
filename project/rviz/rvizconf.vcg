@@ -1,0 +1,52 @@
+Axes.Enabled=1
+Axes.Length=1
+Axes.Radius=0.1
+Axes.Reference\ Frame=<Fixed Frame>
+Background\ ColorB=0
+Background\ ColorG=0
+Background\ ColorR=0
+Camera\ Config=0.837794 1.2008 18.0278 0 -1.90735e-06 1.90735e-06
+Camera\ Type=rviz::OrbitViewController
+Fixed\ Frame=/base_footprint
+Grid.Alpha=0.5
+Grid.Cell\ Size=1
+Grid.ColorB=0.5
+Grid.ColorG=0.5
+Grid.ColorR=0.5
+Grid.Enabled=1
+Grid.Line\ Style=0
+Grid.Line\ Width=0.03
+Grid.Normal\ Cell\ Count=0
+Grid.OffsetX=0
+Grid.OffsetY=0
+Grid.OffsetZ=0
+Grid.Plane=0
+Grid.Plane\ Cell\ Count=10
+Grid.Reference\ Frame=<Fixed Frame>
+Property\ Grid\ Splitter=567,78
+Property\ Grid\ State=expanded=.Global Options,Axes.Enabled,Grid.Enabled,Range.Enabled;splitterratio=0.5
+QMainWindow=000000ff00000000fd00000003000000000000011d000002d7fc0200000001fb000000100044006900730070006c0061007900730100000036000002d7000000ee00ffffff0000000100000131000002d7fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000036000000bb0000006700fffffffb0000000a0056006900650077007301000000f700000155000000bb00fffffffb0000001200530065006c0065006300740069006f006e0100000252000000bb0000006700ffffff00000003000006400000003efc0100000001fb0000000800540069006d0065010000000000000640000002bf00ffffff000003e6000002d700000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+Range.Alpha=0.5
+Range.Buffer\ Length=10
+Range.ColorB=1
+Range.ColorG=1
+Range.ColorR=1
+Range.Enabled=1
+Range.Topic=/ranger_scan
+Target\ Frame=<Fixed Frame>
+Tool\ 2D\ Nav\ GoalTopic=/move_base_simple/goal
+Tool\ 2D\ Pose\ EstimateTopic=initialpose
+[Display0]
+ClassName=rviz::AxesDisplay
+Name=Axes
+[Display1]
+ClassName=rviz::GridDisplay
+Name=Grid
+[Display2]
+ClassName=rviz::RangeDisplay
+Name=Range
+[Window]
+Height=896
+Width=1620
+X=-11
+Y=-37

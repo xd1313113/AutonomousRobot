@@ -1,0 +1,17 @@
+scan_filter_chain:
+- name: hokuyo_min_range_filter
+  type: hokuyo_laser_filters/LaserScanMinRangeFilter
+
+- type: laser_filters/LaserArrayFilter
+  name: laser_median_filter
+  params: 
+    range_filter_chain:
+      - name: median_5
+        type: filters/MultiChannelMedianFilterFloat 
+        params:
+          number_of_observations: 5
+    intensity_filter_chain:
+      - name: median_5
+        type: filters/MultiChannelMedianFilterFloat 
+        params:
+          number_of_observations: 1

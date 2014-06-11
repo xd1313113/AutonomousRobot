@@ -1,0 +1,3 @@
+scan_filter_chain:
+- name: hokuyo_min_range_filter
+  type: hokuyo_laser_filters/LaserScanMinRangeFilter

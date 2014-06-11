@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="stage-elec" name="stageros" type="stageros" args="$(find project)/world/simple.world" required="true"/>
+  <node pkg="project" name="$(anon control)" type="control" />
+</launch>

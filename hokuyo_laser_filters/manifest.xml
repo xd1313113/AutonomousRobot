@@ -1,0 +1,21 @@
+<package>
+  <description brief="hokuyo_laser_filters">
+
+     hokuyo_laser_filters
+
+  </description>
+  <author>Addisu Z. Taddese</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/hokuyo_laser_filters</url>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="filters"/>
+  <depend package="pluginlib"/>
+  <export>
+      <filters plugin="${prefix}/hokuyo_laser_filters_plugins.xml"/>
+  </export>
+
+</package>
+
+

@@ -1,0 +1,15 @@
+<package>
+  <description brief="pioneer_2dnav">
+
+     pioneer_2dnav
+
+  </description>
+  <author>Addisu Taddese</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/pioneer_2dnav</url>
+  <depend package="move_base"/>
+
+</package>
+
+

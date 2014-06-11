@@ -1,0 +1,16 @@
+<launch>
+<!--<node pkg="tf" type="static_transform_publisher" name="laser_tf_broadcaster" args="0.225 0  0.120 0 0 0 base_link laser 100" />-->
+<!--<node pkg="tf" type="static_transform_publisher" name="baselink_tf_broadcaster" args="0.0 0 0.0 0 0 0 base_footprint base_link 100" />-->
+<!--<node pkg="tf" type="static_transform_publisher" name="footprint_tf_broadcaster" args="0.0 0 0.0 0 0 0 odom base_footprint 100" />-->
+<!--<node pkg="tf" type="static_transform_publisher" name="footprint_tf_broadcaster" args="0.0 0 0.0 0 0 0 base_link base_footprint 100" />-->
+<!--<node pkg="tf" type="static_transform_publisher" name="laser_tf_broadcaster" args="0.0 0  0.0 0 0 0 base_link laser 100" />-->
+
+  <!--<node pkg="tf" type="static_transform_publisher" name="st_publisher_0" args="0.069 0.136 0.15 1.57 0 0 base_link base_ranger_link_0 100"/>-->
+  <!--<node pkg="tf" type="static_transform_publisher" name="st_publisher_1" args="0.114 0.119 0.15 0.87 0 0 base_link base_ranger_link_1 100"/>-->
+  <node pkg="tf" type="static_transform_publisher" name="st_publisher_2" args="0.148 0.078 0.15 0.52 0 0 base_link base_ranger_link_2 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="st_publisher_3" args="0.166 0.027 0.15 0.17 0 0 base_link base_ranger_link_3 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="st_publisher_4" args="0.166 -0.027 0.15 -0.17 0 0 base_link base_ranger_link_4 100" />
+  <node pkg="tf" type="static_transform_publisher" name="st_publisher_5" args="0.148 -0.078 0.15 -0.52 0 0 base_link base_ranger_link_5 100" />
+  <!--<node pkg="tf" type="static_transform_publisher" name="st_publisher_6" args="0.114 -0.119 0.15 -0.87 0 0 base_link base_ranger_link_6 100" />-->
+  <!--<node pkg="tf" type="static_transform_publisher" name="st_publisher_7" args="0.069 -0.136 0.15 -1.57 0 0 base_link base_ranger_link_7 100" />-->
+</launch>

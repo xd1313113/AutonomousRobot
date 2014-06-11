@@ -1,0 +1,8 @@
+<library path="lib/libhokuyo_laser_filters">
+    <class name="hokuyo_laser_filters/LaserScanMinRangeFilter" type="hokuyo_laser_filters::LaserScanMinRangeFilter" 
+        base_class_type="filters::FilterBase<sensor_msgs::LaserScan>">
+        <description>
+            Filter removes values less than min_range and replaces them with max_range
+        </description>
+    </class>
+</library>

@@ -1,0 +1,103 @@
+lab_costmap:
+    global_frame: odom
+    robot_base_frame: base_link
+#robot_base_frame: base_footprint
+    update_frequency: 20.0
+    publish_frequency: 5.0
+    static_map: false
+    rolling_window: true
+    width: 20.0
+    height: 20.0
+    #origin: -10,-10
+    origin: 0,0
+#origin: 0,0
+    #resolution: 0.03
+    #resolution: 0.03
+    resolution: 0.05
+#transform_tolerance: 0.3
+#transform_tolerance: 0.3
+    transform_tolerance: 0.5
+    map_type: "costmap"
+
+
+    obstacle_range: 2.0
+    raytrace_range: 3.0
+#footprint:   [
+                #[-0.2, 0.12],
+                #[-0.2, -0.12],
+                #[-0.12, -0.2555],
+                #[0.12, -0.2555],
+                #[0.2, -0.12],
+                #[0.2, 0.12],
+                #[0.12, 0.2555],
+                #[-0.12, 0.2555]
+#]
+    #footprint:      [
+    #                [ 0.12   , -0.2   ]  ,
+    #                [ -0.12  , -0.2   ]  ,
+    #                [ -0.2555, -0.12 ]   ,
+    #                [ -0.2555, 0.12   ]  ,
+    #                [ -0.12  , 0.2     ] ,
+    #                [ 0.12   , 0.2     ] ,
+    #                [ 0.2555 , 0.12   ]  ,
+    #                [ 0.2555 , -0.12 ]
+    #                                ]
+    #robot_radius: 0.4
+    robot_radius: 0.2
+    inflation_radius: 0.7
+    #inflation_radius: 1.0
+
+    #observation_sources: laser_scan_sensor
+    #observation_sources: point_cloud_sonar
+    observation_sources: laser_scan_sensor point_cloud_sonar
+    laser_scan_sensor: {
+        #sensor_frame: /base_laser_link,
+        sensor_frame: laser,
+        data_type: LaserScan,
+        #topic: scan,
+        topic: scan_filtered,
+        marking: true,
+        clearing: true,
+        observation_persistence: 0.0
+    }
+    
+    point_cloud_sonar: {
+        sensor_frame: /base_laser_link,
+        data_type: PointCloud,
+        topic: /p3dx_control/point_cloud,
+        marking: true,
+        #clearing: true,
+        clearing: false,
+        obstacle_range: 4.0,
+        raytrace_range: 5.0,
+        observation_persistence: 1.0
+    }
+
+local_planner:
+    max_vel_x: 1.0
+    min_vel_x: 0.2
+    max_rotational_vel: 1.0
+    min_in_place_rotational_vel: 0.2
+
+    acc_lim_th: 3.2
+    acc_lim_x: 2.5
+    acc_lim_y: 2.5
+
+    holonomic_robot: false
+    #occdist_scale: 0.01
+    #occdist_scale: 0.1
+    #path_distance_bias: 0.5
+    dwa: false
+    publish_cost_grid_pc: false
+    #heading_scoring_timestep: 5.0
+    sim_time: 2.5
+    vx_samples: 8
+    yaw_goal_tolerance: 0.1
+    xy_goal_tolerance: 0.3
+    sim_granularity: 0.01
+
+#clearing_rotation_allowed: false
+#recovery_behavior_enabled: false
+#controller_frequency: 10
+#planner_patience: 1
+

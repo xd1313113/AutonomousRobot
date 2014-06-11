@@ -1,0 +1,64 @@
+# Based on simple.world by Richard Vaughan
+
+include "pioneer-elec.inc"
+#include "pioneer.inc"
+include "map.inc"
+#include "hokuyo.inc"
+include "hokuyo-elec.inc"
+include "sick.inc"
+
+# time to pause (in GUI mode) or quit (in headless mode (-g)) the simulation
+#quit_time 3600 # 1 hour of simulated time
+
+#paused 1
+
+resolution 0.01 
+#floorplan (
+#        name "del2env"
+#        size [10.0 10.0 1.0]
+#        pose [0 0 0 0]
+#        bitmap "del2env.png"
+#        )
+## configure the GUI window
+window
+(
+  size [ 1600.000 849.000 ] # in pixels
+  scale 144.210   # pixels per meter
+  center [ 0.119 -0.235]
+  rotate [ 71.000  32.000 ]
+
+  show_data 1              # 1=on 0=off
+)
+
+pioneer3dx
+(
+  pose [ 0.0 0 0 0]
+  # the origin in pioneer.inc is wrong 
+  origin [-0.045 0 0 0]
+  #hokuyolaser(pose [0 0 0 0])
+  hokuyolaser(pose [0 0 0 0])
+  #fancysicklaser( pose [ 0.000 0.000 0.000 3.000 ] ) 
+  gui_nose 1
+
+  
+)
+
+#fancypioneer2dx
+#(		  
+#  # can refer to the robot by this name
+#  name "r0"
+#  pose [ -2.228 -5.262 0.000 -151.707 ] 
+
+#  # pioneer2dx's sonars	will be ranger:0 and the laser will be ranger:1
+#  fancysicklaser( pose [ 0.000 0.000 0.000 0.000 ] ) 
+#  #fancysicklaser( pose [ 0.100 0.000 0.000 0.000 ] ) 
+ 
+#  # demonstrate a plugin controller, implemented in examples/ctrl/wander.cc
+#  #ctrl "wander"
+
+#  # report error-free position in world coordinates
+#  localization "gps"
+#  localization_origin [ 0 0 0 0 ]
+#)
+
+include "obstacles.inc"

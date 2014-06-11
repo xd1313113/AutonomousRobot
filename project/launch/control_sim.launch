@@ -1,0 +1,57 @@
+<launch>
+  <!-- Set /use_sim_time. This is import for stage and move_base to work properly. Staget sets this automatically when
+       it starts, but the order of nodes is not determined when using launch files-->
+    <!-- Run the map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find project)/params/FGHFloorMap2.yaml"/>
+
+    <!--- Run AMCL -->
+    <!--<include file="$(find amcl)/examples/amcl_diff.launch" >-->
+    <node pkg="amcl" type="amcl" name="amcl" output="screen">
+      <remap from="scan" to="scan_filtered"/>
+      <param name="initial_pose_x" value="26.734"/>
+      <param name="initial_pose_y" value="9.238"/>
+      <param name="initial_pose_a" value="0"/>
+      <!--<param name="initial_cov_xx" value="100"/>-->
+      <!--<param name="initial_cov_yy" value="100"/>-->
+      <param name="initial_cov_aa" value="0.02"/>
+      <param name="odom_alpha1" value="0.1"/>
+      <param name="odom_alpha2" value="0.3"/>
+      <param name="odom_alpha3" value="0.3"/>
+      <param name="odom_alpha4" value="0.1"/>
+      <param name="likelihood_max_dist" value="2.5"/>
+    </node>
+    <!--- Run rviz -->
+    <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/rviz/single_robot.vcg"/>-->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find project)/rviz/move_base_single_robot2.vcg"/>
+
+    <param name="/use_sim_time" type="bool" value="true" />
+
+    <!--<node name="stage" pkg="stage-elec" type="stageros" args="$(find project)/world/simple.world">-->
+    <!--  [><node name="stage" pkg="stage" type="stageros" args="$(find project)/world/simple.world"><]-->
+    <!--    <remap from="laser_scan" to="scan"/>-->
+    <!--    <remap from="base_scan" to="scan"/>-->
+    <!--    <remap from="odom" to="pose"/>-->
+    <!--    <remap from="ranger_scan" to="dont_read"/>-->
+    <!--    <remap from="clock" to="bad_clock"/>-->
+    <!--  </node>-->
+      <include file="$(find project)/launch/hokuyo_laser_filter.launch" />
+
+      <!--<include file="$(find project)/launch/static_transform.launch" />-->
+      <!--<node pkg="project" type="tf_map.py" respawn="false" name="p3dx_new_odom_broad" output="screen"/>-->
+
+      <node pkg="project" type="control" respawn="false" name="p3dx_control" output="screen">
+        <remap from="/odom" to="/pose" />
+        <rosparam file="$(find project)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find project)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find project)/params/control_params_sim.yaml" command="load"/>
+      </node>
+
+
+    <node pkg="move_base" type="move_base" respawn="false" name="p3dx_move_base" output="screen">
+        <rosparam file="$(find project)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find project)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find project)/params/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find project)/params/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find project)/params/base_local_planner_params.yaml" command="load" />
+    </node>
+</launch>
